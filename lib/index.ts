@@ -1,3 +1,3 @@
 // export your main module:
-export { SomeModule } from './modules/some.module';
-export { SomeModuleInst } from './modules/some.module';
+export { Injectable } from './decorators/injectable.decorator';
+export { Injector } from './modules/injector.module';
