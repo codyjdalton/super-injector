@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/codyjdalton/super-injector.svg?branch=master)](https://travis-ci.org/codyjdalton/ts-module-seed) [![Coverage Status](https://coveralls.io/repos/github/codyjdalton/super-injector/badge.svg?branch=master)](https://coveralls.io/github/codyjdalton/ts-module-seed?branch=master) 
+[![Build Status](https://travis-ci.org/codyjdalton/super-injector.svg?branch=master)](https://travis-ci.org/codyjdalton/super-injector) [![Coverage Status](https://coveralls.io/repos/github/codyjdalton/super-injector/badge.svg?branch=master)](https://coveralls.io/github/codyjdalton/super-injector?branch=master) 
 
 # Super Injector
 
