@@ -29,9 +29,9 @@ export const Injector = new class {
    * @param {object} config - an object containing metadata
    * @param {string | symbol} propKey
    */
-  /*public set(target: Type<any>, config: object = {}, propKey: string | symbol): void {
+  public set(target: Type<any>, config: object, propKey: any = null): void {
     Object.keys(config).forEach(
-      (key: string) => Reflect.defineMetadata(key, config[key], target, propKey),
+      (key: string) => Reflect.defineMetadata(key, config[key], target, propKey ? propKey : undefined),
     );
   }
 
@@ -41,7 +41,7 @@ export const Injector = new class {
    * @param {string} key
    * @param {any} defaultValue
    */
-  /*public get(target: Type<any>, key: string, defaultValue: any = null, propKey: any = null): any {
+  public get(target: Type<any>, key: string, defaultValue: any = null, propKey: any = null): any {
     return Reflect.hasMetadata(key, target, propKey ? propKey : undefined) ?
            Reflect.getMetadata(key, target, propKey ? propKey : undefined) :
            defaultValue;

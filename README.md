@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/codyjdalton/super-injector.svg?branch=master)](https://travis-ci.org/codyjdalton/ts-module-seed) [![Coverage Status](https://coveralls.io/repos/github/codyjdalton/super-injector/badge.svg?branch=master)](https://coveralls.io/github/codyjdalton/ts-module-seed?branch=master) 
+[![npm version](https://badge.fury.io/js/super-injector.svg)](https://badge.fury.io/js/super-injector) [![Build Status](https://travis-ci.org/codyjdalton/super-injector.svg?branch=master)](https://travis-ci.org/codyjdalton/super-injector) [![Coverage Status](https://coveralls.io/repos/github/codyjdalton/super-injector/badge.svg?branch=master)](https://coveralls.io/github/codyjdalton/super-injector?branch=master) ![npm](https://img.shields.io/npm/l/super-injector.svg)
+
 
 # Super Injector
 
@@ -15,6 +16,10 @@ npm i super-injector --save
 ## Usage
 
 Add the Injectable decorator and resolve a class with dependencies:
+
+### Get an instance of a class with dependencies
+
+Super Injector will new up your class and all of its dependencies
 
 ```typescript
 import { Injectable, Injector } from 'super-injector';
@@ -38,6 +43,48 @@ class AnotherClass {
 const anotherClassInstance: AnotherClass = Injector.resolve(AnotherClass);
 
 console.log(anotherClassInstance.message);
+
+// logs "Hello World" to the console
+```
+
+### Set metadata on classes
+
+Set metadata on classes before instantiation:
+
+```typescript
+import { Injectable, Injector } from 'super-injector';
+
+@Injectable()
+class TestClass {}
+
+// set a property at the test class level
+Injector.set(TestClass, { someProp: 'Hello World' });
+
+console.log(Injector.get(TestClass, 'someProp'));
+
+// logs "Hello World" to the console
+```
+
+### Set metadata on class methods
+
+You can set metadata at design time and retrieve it at run time:
+
+```typescript
+import { Metadata, Injector } from 'super-injector';
+
+class SomeClass {
+    
+    @Metadata({
+        someProp: 'Hello World'
+    })
+    someMethod(): void {
+        // ..
+    }
+}
+
+const someClassInstance: AnotherClass = Injector.resolve(someClassInstance);
+
+console.log(Injector.get(someClassInstance, 'someProp', null, 'someMethod'));
 
 // logs "Hello World" to the console
 ```
