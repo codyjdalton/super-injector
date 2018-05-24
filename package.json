@@ -1,7 +1,7 @@
 {
   "name": "super-injector",
   "description": "",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "keywords": [],
@@ -54,5 +54,12 @@
     "build": "npm test && tsc",
     "stop": "killall -KILL node",
     "test": "nyc mocha"
+  },
+  "bugs": {
+    "url": "https://github.com/codyjdalton/super-injector/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codyjdalton/super-injector.git"
   }
 }
