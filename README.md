@@ -65,7 +65,7 @@ console.log(Injector.get(TestClass, 'someProp'));
 // logs "Hello World" to the console
 ```
 
-### Set metadata on class methods
+### Set and get metadata on class methods
 
 You can set metadata at design time and retrieve it at run time:
 
@@ -75,7 +75,8 @@ import { Metadata, Injector } from 'super-injector';
 class SomeClass {
     
     @Metadata({
-        someProp: 'Hello World'
+        someProp: 'Hello World',
+        anotherProp: 'Hi World'
     })
     someMethod(): void {
         // ..
@@ -85,8 +86,10 @@ class SomeClass {
 const someClassInstance: AnotherClass = Injector.resolve(someClassInstance);
 
 console.log(Injector.get(someClassInstance, 'someProp', null, 'someMethod'));
+// logs Hello World to the console
 
-// logs "Hello World" to the console
+console.log(Injector.getAll(someClassInstance, 'someMethod'));
+// logs { "someProp": "Hello World", "anotherProp": "Hi World" } to the console
 ```
 
 ## Versioning
