@@ -54,7 +54,7 @@ export const Injector = new class {
    *
    * Return all values from a given object
    */
-  /*public getAll(target: Type<any>, propertyKey: string): object {
+  public getAll(target: Type<any>, propertyKey: string): object {
     return Reflect.getMetadataKeys(target, propertyKey).reduce(
       (result: object, key: string): object => {
         result[key] = this.get(target, key, undefined, propertyKey);
@@ -63,8 +63,7 @@ export const Injector = new class {
     );
   }
 
-  public getParams(target: Type<any>, propertyKey: string) {
+  /*public getParams(target: Type<any>, propertyKey: string) {
     return Reflect.getMetadata('design:paramtypes', target.prototype, propertyKey) || [];
-  }
-  */
+  }*/
 }();

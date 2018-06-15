@@ -74,4 +74,27 @@ describe('Injector', () => {
         expect(propVal).to.equal('another-test');
         expect(anotherVal).to.equal(null);
     });
+
+    it('should get all metadata for on a method', () => {
+
+        const expectedMetadata: any = {
+            path: 'some-path',
+            produces: 'some-test'
+        };
+
+        @Injectable()
+        class TestComponent {
+
+            @Metadata(expectedMetadata)
+            public someTest() {
+                // ..
+            }
+        }
+
+        const aTestComponent: any = Injector.resolve(TestComponent);
+        const metadata: any = Injector.getAll(aTestComponent, 'someTest');
+
+        expect(metadata.path).to.equal(expectedMetadata.path);
+        expect(metadata.produces).to.equal(expectedMetadata.produces);
+    });
 });
