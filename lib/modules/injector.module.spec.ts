@@ -97,4 +97,20 @@ describe('Injector', () => {
         expect(metadata.path).to.equal(expectedMetadata.path);
         expect(metadata.produces).to.equal(expectedMetadata.produces);
     });
+
+    it('should get all metadata keys for a method', () => {
+
+        @Injectable()
+        class TestComponent {
+
+            @Metadata()
+            public someTest(someInput, anotherInput) {
+                // ..
+            }
+        }
+
+        const params: any = Injector.getParams(TestComponent, 'someTest');
+
+        expect(params.length).to.equal(2);
+    });
 });

@@ -11,7 +11,8 @@ import { Type } from '../common/models/type.model';
 export const Injector = new class {
 
   /**
-   * Resolves instances by injecting required services
+   * @method resolve
+   * @description Resolves instances by injecting required services
    * @param {Type<any>} target
    * @returns {T}
    */
@@ -24,10 +25,12 @@ export const Injector = new class {
   }
 
   /**
-   * Stores a service in the Injector
+   * @method set
+   * @description Stores a service in the Injector
    * @param {Type<any>} target
    * @param {object} config - an object containing metadata
    * @param {string | symbol} propKey
+   * @returns {void}
    */
   public set(target: Type<any>, config: object, propKey: any = null): void {
     Object.keys(config).forEach(
@@ -36,10 +39,11 @@ export const Injector = new class {
   }
 
   /**
-   * @function get
+   * @method get
    * @param {Type<any>} target
    * @param {string} key
    * @param {any} defaultValue
+   * @returns {any}
    */
   public get(target: Type<any>, key: string, defaultValue: any = null, propKey: any = null): any {
     return Reflect.hasMetadata(key, target, propKey ? propKey : undefined) ?
@@ -48,10 +52,10 @@ export const Injector = new class {
   }
 
   /**
-   * @function getAll
-   * @param target
-   * @param propertyKey
-   *
+   * @method getAll
+   * @param {any} target
+   * @param {string} propertyKey
+   * @returns {object}
    * Return all values from a given object
    */
   public getAll(target: Type<any>, propertyKey: string): object {
@@ -63,7 +67,12 @@ export const Injector = new class {
     );
   }
 
-  /*public getParams(target: Type<any>, propertyKey: string) {
-    return Reflect.getMetadata('design:paramtypes', target.prototype, propertyKey) || [];
-  }*/
+  /**
+   * @method getParams
+   * @param {any} target
+   * @param {string} propertyKey
+   */
+  public getParams(target: Type<any>, propertyKey: string): any[] {
+    return Reflect.getMetadata('design:paramtypes', target.prototype, propertyKey);
+  }
 }();
